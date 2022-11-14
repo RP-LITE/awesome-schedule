@@ -1,0 +1,27 @@
+{
+  "name": "awesome-schedule",
+  "version": "1.0.0",
+  "description": "<div id=\"top\"></div>\r <span align=\"center\">",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RP-LITE/awesome-schedule.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RP-LITE/awesome-schedule/issues"
+  },
+  "homepage": "https://github.com/RP-LITE/awesome-schedule#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
+}
