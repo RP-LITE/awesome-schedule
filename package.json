@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/RP-LITE/awesome-schedule#readme",
   "dependencies": {
-    "concurrently": "^7.5.0"
+    "concurrently": "^7.5.0",
+    "react-router-dom": "^6.4.3"
   }
 }
