@@ -1,3 +1,47 @@
-header {
+:root {
+  --grey: #ececec;
+  --red: #f78888;
+  --yellow: #f3d250;
+  --lightblue: #90ccf4;
+  --blue: #5da2d5;
+}
+
+.header {
+  background: var(--grey);
   position: sticky;
+  height: 80px;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.headertitle {
+  color: black;
+  align-items: left;
+  justify-content: left;
+  display: flex;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.headerlink {
+  color: black;
+  padding: 30px;
+  justify-content: center;
+  transition: 1s all ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.headerlink.hover {
+  background-color: var(--lightblue);
+}
+
+.headersigninbtn {
+  background-color: aquamarine;
+}
+
+.headersigninbtn.hover {
+  transition: 1s all ease;
+  background-color: blue;
 }

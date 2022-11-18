@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
@@ -7,18 +7,18 @@ const Header = () => {
   //user.type (User model) will determine the state here and render conditionally based on that.
 
   return (
-    <header>
+    <header className='header'>
       <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/client'>Dashboard</Link>
-          </li>
-          {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}
-        </ul>
-        <button>Sign in</button>
+        <NavLink to='/' className='headerlink'>
+          Home
+        </NavLink>
+        <NavLink to='/client' className='headerlink'>
+          Dashboard
+        </NavLink>
+        <NavLink to='/' className='headerlink'>
+          Sign in
+        </NavLink>
+        {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}
       </nav>
     </header>
   );
