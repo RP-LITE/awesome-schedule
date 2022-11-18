@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, ClientDetail } = require('../../models');
 const { authMiddleware, signToken } = require('../../utils/auth');
 
 const protectedRoutes = require('./protected');
@@ -7,8 +7,16 @@ const protectedRoutes = require('./protected');
 /**
  * Create account route
  */
-router.post('/',(req,res) => {
+router.post('/',async ({ body },res) => {
+  const user = await User.create(body?.user || {});
 
+  if (!user) {
+    return res.status(400).json({ message: 'Invalid account options' });
+  }
+  const detailObj
+  const clientDetail = await ClientDetail.create({...(body?.detail || {})});
+  const token = signToken(user);
+  res.json({ token, user });
 });
 
 /**
@@ -26,6 +34,6 @@ router.post('/login',async (req,res) => {
   res.json({ token, user });
 });
 
-router.use('/',protectedRoutes);
+router.use('/', authMiddleware, protectedRoutes);
 
 module.exports = router;
