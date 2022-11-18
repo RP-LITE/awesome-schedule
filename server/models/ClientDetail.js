@@ -12,6 +12,6 @@ const providerSchema = new Schema(
   }
 );
 
-const ProviderDetail = model('ProviderDetail',providerSchema);
+const ProviderDetail = model('ClientDetail',providerSchema);
 
 module.exports = ProviderDetail;
