@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const serviceSchema = require('./Service');
-const hourSchema = require('./HousSchema');
+const hourSchema = require('./HoursSchema');
 
 const providerSchema = new Schema(
   {
