@@ -1,19 +1,26 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
-const serviceSchema = require('./Service');
-const hourSchema = require('./HoursSchema');
+const serviceSchema = require("./Service");
+const hourSchema = require("./HoursSchema");
 
-const providerSchema = new Schema(
-  {
-    User: {
+const providerSchema = new Schema({
+  User: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  schedule: [
+    {
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: "Schedule",
     },
-    services: [serviceSchema],
-    HOO: [hourSchema]
-  }
-);
+  ],
+  address: {
+    type: String,
+    required: true,
+  },
+  HOO: [hourSchema],
+});
 
-const ProviderDetail = model('ProviderDetail',providerSchema);
+const ProviderDetail = model("ProviderDetail", providerSchema);
 
 module.exports = ProviderDetail;
