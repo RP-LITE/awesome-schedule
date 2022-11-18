@@ -62,7 +62,7 @@ const LoginForm = () => {
           id='signUpUname'
           name='username'
           onChange={handleInputChange}
-          value={userFormData.username || userFormData.email}
+          value={userFormData.username}
           required
         ></input>
         <label htmlFor='password'>Password</label>
