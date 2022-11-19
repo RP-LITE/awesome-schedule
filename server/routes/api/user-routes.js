@@ -34,7 +34,11 @@ router.post("/", async ({ body }, res) => {
     })
       .populate("client")
       .populate("provider");
-    const token = signToken({ username: user.username, email: user.email });
+    const token = signToken({
+      username: user.username,
+      email: user.email,
+      accountType: user.accountType,
+    });
     res.json({ token, user: fullUser });
   } catch (err) {
     console.error(err);

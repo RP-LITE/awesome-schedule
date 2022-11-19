@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ServiceModal = ({ closeModal }) => {
+const Modal = ({ closeModal }) => {
   return (
     <div className='modalBackground'>
       <div className='modalContainer'>
@@ -24,4 +24,4 @@ const ServiceModal = ({ closeModal }) => {
   );
 };
 
-export default ServiceModal;
+export default Modal;

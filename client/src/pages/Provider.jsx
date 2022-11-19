@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 export default function Provider() {
-    return(
-    <section>Provider Dashboard</section>
-    )
-  }
+  return <section>Provider Dashboard --------</section>;
+}
