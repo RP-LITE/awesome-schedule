@@ -1,11 +1,19 @@
 const router = require('express').Router();
+const { ClientDetail, ProviderDetail } = require('../../../models');
 
+const UserDetails = {
+  client: ClientDetail,
+  provider: ProviderDetail
+};
+//
 /**
  * Get the user/provider's schedule
  * @param {string} type - The type of schedule to get; day, week, or month
  */
-router.get('/:type',(req,res)=>{
-
+router.get('/',async (req,res)=>{
+  const details = await UserDetails[req.user.accountType].findOne({user:req.user._id})
+    .populate('schedule');
+  res.json(details);
 });
 
 /**
