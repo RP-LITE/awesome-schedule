@@ -33,17 +33,17 @@ class AuthService {
     return localStorage.getItem("id_token") || {};
   }
 
-  login(idToken) {
+  login(idToken,setRedirect) {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
-    redirect("/dashboard");
+    setRedirect('/dashboard');
   }
 
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");
     // this will reload the page and reset the state of the application
-    redirect("/");
+    return redirect("/");
   }
 }
 

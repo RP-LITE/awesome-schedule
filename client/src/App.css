@@ -1,0 +1,25 @@
+:root {
+    --grey: #ececec;
+    --red: #f78888;
+    --yellow: #f3d250;
+    --lightblue: #90ccf4;
+    --blue: #5da2d5;
+
+}
+
+
+
+body {
+    margin-top: 0;
+}
+
+.page-container {
+    position: relative;
+    height: 100%;
+    margin-left: 72px; 
+    background-color: var(--lightblue);
+}
+
+.content-wrap {
+    
+};

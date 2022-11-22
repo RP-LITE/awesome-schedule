@@ -6,8 +6,8 @@ export default function HomePage() {
   return (
     <section>
       Home Page
-      <LoginForm />
-      <SignUpForm />
+      {/* <LoginForm />
+      <SignUpForm /> */}
     </section>
   );
 }
