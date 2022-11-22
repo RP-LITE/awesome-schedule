@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+import ModalOpen from "@/components/modals/ModalOpen";
+import ModalBody from "@/components/modals/ModalBody";
 
 const Header = () => {
   const [userType, setUserType] = useState("");
@@ -15,9 +17,7 @@ const Header = () => {
         <NavLink to='/dashboard' className='headerlink'>
           Dashboard
         </NavLink>
-        <NavLink to='/' className='headerlink'>
-          Sign in
-        </NavLink>
+        <ModalOpen Modal={ModalBody}>Sign In</ModalOpen>
         {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}
       </nav>
     </header>
