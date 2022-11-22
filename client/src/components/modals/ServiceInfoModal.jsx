@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 
-const Modal = ({ closeModal }) => {
+const ServiceInfoModal = () => {
   return (
-    <div className='modalBackground'>
-      <div className='modalContainer'>
-        <button onClick={() => closeModal(false)}> X </button>
+    
         <div className='service-info'>
           <h1 className='service-name'>Service Name</h1>
           <h2 className='service-provider'>Provider Here</h2>
@@ -19,9 +17,8 @@ const Modal = ({ closeModal }) => {
             <button>Cancel Appointment</button>
           </div>
         </div>
-      </div>
-    </div>
+     
   );
 };
 
-export default Modal;
+export default ServiceInfoModal;

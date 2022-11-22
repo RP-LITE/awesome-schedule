@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./Button.css";
 
-const App = () => {
+const Button = ({children}) => {
     cost [isHover, setIsHover] useState(false);
 
     const handleMouseEnter = () => {
         setIsHover(true);
     }
-};
+    const handleMouseLeave = () => {
+        setIsHover(false)};
 
-const handleMouseLeave = () => {
-    setIsHover(false);
+        return(
+            <button class = "btn">{children}</button>
+        )
 };
 

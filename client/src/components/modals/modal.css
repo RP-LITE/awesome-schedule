@@ -1,0 +1,58 @@
+:root {
+    --grey: #ececec;
+    --red: #f78888;
+    --yellow: #f3d250;
+    --lightblue: #90ccf4;
+    --blue: #5da2d5;
+  }
+
+.signForm {
+    background: var(--grey);
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.label {
+    background: var(--blue)
+    
+}
+
+.modalContainer {
+  position: absolute;
+  width: fit-content;
+  /* top: 200px;
+  left: 200px;
+  right: 200px;
+  bottom: 200px; */
+  background-color: var(--grey);
+}
+
+.Overlay {
+  position: fixed;
+  top: 20%;
+  left: 75%;
+  right: 10%;
+  bottom: 80%;
+  background-color: var(--red);
+}
+
+.username{
+
+}
+
+.password {
+
+}
+
+.email {
+
+}
+
+.submitBtn{
+
+}
+
+.radio {
+
+}
+

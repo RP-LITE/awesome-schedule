@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import ServiceModal from "./ServiceModal";
+import ModalBody from "./ModalBody";
+import SignUpForm from "./SignUpForm"
 
-function Modal() {
+function ModalOpen({children, Modal}) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
@@ -12,11 +13,11 @@ function Modal() {
           setModalShow(true);
         }}
       >
-        Schedule Appointment!
+        {children}
       </button>
-      {modalShow && <ServiceModal closeModal={setModalShow} />}
+      {modalShow && <Modal closeModal={setModalShow} />}
     </div>
   );
 }
 
-export default Modal;
+export default ModalOpen;

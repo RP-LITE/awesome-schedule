@@ -4,7 +4,7 @@ const serviceSchema = require("./Service");
 const hourSchema = require("./HoursSchema");
 
 const providerSchema = new Schema({
-  User: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
@@ -14,6 +14,7 @@ const providerSchema = new Schema({
       ref: "Schedule",
     },
   ],
+  services:[serviceSchema],
   address: {
     type: String,
     required: true,

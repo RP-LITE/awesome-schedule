@@ -6,6 +6,16 @@
   --blue: #5da2d5;
 }
 
+.iconimage {
+  display:flex;
+  top:0;
+  flex-direction: column;
+  height: auto;
+  width: 80px;
+ 
+
+}
+
 .sidebar {
   background: var(--grey);
   position: absolute;
@@ -19,25 +29,26 @@
 }
 
 .sidebarlink {
-  background-color: var(--red);
+  background-color: var(--grey);
   padding: 10px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   transition: 1s all ease;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
+  top: 50%;
+  position: relative;
 }
-.sidebarlink1 {
+.sidebarlink1:hover {
   background-color: var(--red);
 }
-.sidebarlink2 {
+.sidebarlink2:hover {
   background-color: var(--yellow);
 }
-.sidebarlink3 {
+.sidebarlink3:hover {
   background-color: var(--lightblue);
 }
-
 .sidebarlink.hover {
   background-color: var(--blue);
 }

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
-const providerSchema = new Schema({
-  User: {
+const clientSchema = new Schema({
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
@@ -13,6 +13,6 @@ const providerSchema = new Schema({
   ],
 });
 
-const ClientDetail = model("ClientDetail", providerSchema);
+const ClientDetail = model("ClientDetail", clientSchema);
 
 module.exports = ClientDetail;
