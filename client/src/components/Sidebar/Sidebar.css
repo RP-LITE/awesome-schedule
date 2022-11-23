@@ -8,6 +8,7 @@
   --yellow: #f3d250;
   --lightblue: #90ccf4;
   --blue: #5da2d5;
+  --black: #080f0f;
 }
 
 .iconimage {
@@ -33,6 +34,7 @@
 .sidebarlink {
   background-color: var(--grey);
   padding: 10px;
+  color: black;
   justify-content: space-between;
   align-items: center;
   transition: 1s all ease;
@@ -41,6 +43,8 @@
   flex-direction: column;
   top: 50%;
   position: relative;
+  font-weight: bold;
+  border-radius: 0.25rem;
 }
 .sidebarlink1:hover {
   background-color: var(--red);
@@ -53,4 +57,8 @@
 }
 .sidebarlink.hover {
   background-color: var(--blue);
+}
+
+.mainButton {
+  @apply shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1;
 }

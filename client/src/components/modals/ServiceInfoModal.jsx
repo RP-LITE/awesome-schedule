@@ -1,23 +1,27 @@
 import React, { useState } from "react";
+import { scheduleAppt } from "@/utils/API";
 
-const ServiceInfoModal = () => {
+const ServiceInfoModal = (props) => {
+  const handleScheduleAppt = (e) => {
+    e.preventDefault();
+    scheduleAppt();
+  };
+
   return (
-    
-        <div className='service-info'>
-          <h1 className='service-name'>Service Name</h1>
-          <h2 className='service-provider'>Provider Here</h2>
-          <ul className='service-info'>
-            <li>Location here</li>
-            <li>Cost:</li>
-            <li>Duration:</li>
-          </ul>
-          <div className='action-buttons'>
-            <button>Schedule</button>
-            <button>Reschedule</button>
-            <button>Cancel Appointment</button>
-          </div>
-        </div>
-     
+    <form className='service-info'>
+      <h1 className='service-name'>{props}</h1>
+      <h2 className='service-provider'>{}</h2>
+      <ul className='service-info'>
+        <li>Location:{}</li>
+        <li>Cost:{}</li>
+        <li>Duration:{}</li>
+      </ul>
+      <div className='action-buttons'>
+        <button onClick={handleScheduleAppt}>Schedule</button>
+        {/* <button>Reschedule</button> */}
+        {/* <button>Cancel Appointment</button> */}
+      </div>
+    </form>
   );
 };
 
