@@ -4,11 +4,11 @@ const serviceSchema = require("./Service");
 const scheduleSchema = new Schema({
   service: serviceSchema,
   start: {
-    type: Date,
+    type: Number,
     required: true,
   },
   end: {
-    type: Date,
+    type: Number,
     required: true,
   },
   provider: {

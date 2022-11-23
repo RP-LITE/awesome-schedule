@@ -1,32 +1,32 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, Types } = require("mongoose");
 
 const serviceSchema = new Schema({
-  id: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId()
-  },
+  // id: {
+  //   type: Schema.Types.ObjectId,
+  //   default: () => new Types.ObjectId()
+  // },
   name: {
     type: String,
     required: true,
   },
-  duration:{
+  duration: {
     type: Number,
     required: true,
   },
-  description:{
+  description: {
     type: String,
     required: true,
   },
-  cost:{
+  cost: {
     type: Number,
     required: true,
   },
-  start:{
+  start: {
     type: Date,
   },
-  end:{
+  end: {
     type: Date,
-  }
+  },
 });
 
 module.exports = serviceSchema;
