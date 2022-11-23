@@ -1,3 +1,6 @@
-.btn {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-};
+.btn {
+}

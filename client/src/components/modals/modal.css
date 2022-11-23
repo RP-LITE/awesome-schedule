@@ -1,20 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-    --grey: #ececec;
-    --red: #f78888;
-    --yellow: #f3d250;
-    --lightblue: #90ccf4;
-    --blue: #5da2d5;
-  }
+  --grey: #ececec;
+  --red: #f78888;
+  --yellow: #f3d250;
+  --lightblue: #90ccf4;
+  --blue: #5da2d5;
+}
 
 .signForm {
-    background: var(--grey);
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
+  background: var(--grey);
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .label {
-    background: var(--blue)
-    
+  background: var(--blue);
 }
 
 .modalContainer {
@@ -36,23 +39,17 @@
   background-color: var(--red);
 }
 
-.username{
-
+.username {
 }
 
 .password {
-
 }
 
 .email {
-
 }
 
-.submitBtn{
-
+.submitBtn {
 }
 
 .radio {
-
 }
-
