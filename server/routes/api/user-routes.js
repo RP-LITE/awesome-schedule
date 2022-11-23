@@ -38,6 +38,7 @@ router.post("/", async ({ body }, res) => {
       username: user.username,
       email: user.email,
       accountType: user.accountType,
+      _id: user._id,
     });
     res.json({ token, user: fullUser });
   } catch (err) {
@@ -64,7 +65,12 @@ router.post("/login", async ({ body }, res) => {
         .status(400)
         .json({ message: "Username or password is invalid." });
     }
-    const token = signToken(user);
+    const token = signToken({
+      username: user.username,
+      email: user.email,
+      accountType: user.accountType,
+      _id: user._id,
+    });
     res.json({ token, user });
   } catch (err) {
     console.error(err);

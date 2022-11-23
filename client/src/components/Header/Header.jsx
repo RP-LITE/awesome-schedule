@@ -34,7 +34,7 @@ const Header = () => {
             </ModalTemp>
           </>
         ) : (
-          <ModalTemp />
+          <ModalTemp title='Log Out'>Logout Modal</ModalTemp>
         )}
 
         {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}
