@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --grey: #ececec;
   --red: #f78888;
@@ -7,13 +11,11 @@
 }
 
 .iconimage {
-  display:flex;
-  top:0;
+  display: flex;
+  top: 0;
   flex-direction: column;
   height: auto;
   width: 80px;
- 
-
 }
 
 .sidebar {
