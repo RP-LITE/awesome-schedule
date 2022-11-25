@@ -15,26 +15,29 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <nav>
+      <nav className='flex'>
         <NavLink to='/' className='headerlink'>
           Home
         </NavLink>
-        <NavLink to='/dashboard' className='headerlink'>
-          Dashboard
-        </NavLink>
-        {/* <ModalOpen Modal={ModalBody}>Sign In</ModalOpen> */}
 
-        {!Auth.loggedIn() ? (
+        {Auth.loggedIn() ? (
           <>
-            <ModalTemp title='Login'>
+            <NavLink to='/dashboard' className='headerlink'>
+              Dashboard
+            </NavLink>
+            <button className='headerlink mainButton' onClick={Auth.logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <ModalTemp title='Login' className='headerlink'>
               <LoginForm />
             </ModalTemp>
-            <ModalTemp title='Sign Up'>
+            <ModalTemp title='Sign Up' className='headerlink'>
               <SignUpForm />
             </ModalTemp>
           </>
-        ) : (
-          <ModalTemp title='Log Out'>Logout Modal</ModalTemp>
         )}
 
         {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}

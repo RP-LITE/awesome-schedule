@@ -46,6 +46,7 @@
   font-weight: bold;
   border-radius: 0.25rem;
 }
+
 .sidebarlink1:hover {
   background-color: var(--red);
 }
@@ -60,5 +61,5 @@
 }
 
 .mainButton {
-  @apply shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1;
+  @apply shadow hover:shadow-lg outline-none focus:outline-none;
 }

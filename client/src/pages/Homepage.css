@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grey: #ececec;
+  --red: #f78888;
+  --yellow: #f3d250;
+  --lightblue: #90ccf4;
+  --blue: #5da2d5;
+}
+
+.page-container-home {
+  position: relative;
+  height: 100vh;
+  background-color: var(--lightblue);
+}
+.page-container-db {
+  position: relative;
+  height: 100vh;
+  margin-left: 80px;
+  background-color: var(--lightblue);
+}
+
+.sidebarlink {
+  background-color: var(--grey);
+  padding: 10px;
+  color: black;
+  justify-content: space-between;
+  align-items: center;
+  transition: 1s all ease;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  position: relative;
+  font-weight: bold;
+  border-radius: 0.25rem;
+}
