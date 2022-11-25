@@ -1,6 +1,20 @@
 const router = require("express").Router();
 const { ClientDetail, ProviderDetail, Schedule } = require("../../../models");
 
+/**
+ * Checks a time to see if it is a valid time to schedule for.
+ * @param {Minutes} time - The time to check, in minutes
+ * @param {Response} res - The response object from express
+ * @returns {boolean} - Whether the time is valid or not.
+ */
+const validScheduleTime = (time,res) => {
+  if(time <= Date.now() / 1000 / 60){
+    res.status(400).send("Schedule request must be for future");
+    return false;
+  }
+  return true;
+};
+
 const UserDetails = {
   client: ClientDetail,
   provider: ProviderDetail,
@@ -26,9 +40,9 @@ router.get("/", async (req, res) => {
 router.post("/:providerID", async (req, res) => {
   try {
     // Get the user that is making the request, and the provider whose service is being used
-    const nowMinutes = Date.now() / 1000 / 60; //Current time in minutes.
-    if (req.body.start <= nowMinutes) {
-      return res.status(400).send("Schedule request must be for future");
+    
+    if (!validScheduleTime(req.body.start,res)) {
+      return;
     }
     const [client, provider] = await Promise.all([
       ClientDetail.findOne({ user: req.user._id }).populate("schedule"),
@@ -45,8 +59,7 @@ router.post("/:providerID", async (req, res) => {
       service,
       start: req.body.start,
       client,
-      provider,
-      end: req.body.start + service.duration,
+      provider
     });
     client.schedule.push(scheduled);
     provider.schedule.push(scheduled);
@@ -64,14 +77,39 @@ router.post("/:providerID", async (req, res) => {
 
 /**
  * Reschedule a service
- * @param {GUID} scheduleID - The schedule ID of the service to reschedule
+ * @param {GUID} scheduleID - The ID of the schedule that to reschedule
  */
-router.put("/:scheduleID", (req, res) => {});
+router.put("/:scheduleID", async (req, res) => {
+  try{
+    if (!validScheduleTime(req.body.start,res)) {
+      return;
+    }
+    const schedule = await Schedule.findByIdAndUpdate(
+      req.params.scheduleID,
+      {
+        start:req.body.start
+      },
+      {new:true}
+    );
+    res.json(schedule)
+  }catch(err){
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 /**
  * Cancel a service
  * @param {GUID} scheduleID - the schedule ID of the service to cancel.
  */
-router.delete("/:scheduleID", (req, res) => {});
+router.delete("/:scheduleID", async (req, res) => {
+  try{
+  const schedule = await Schedule.findByIdAndDelete(req.params.scheduleID);
+  res.json(schedule);
+  }catch(err){
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
