@@ -16,10 +16,10 @@ router.get("/providers", async (req, res) => {
 /**
  * Get the services that a provider offers.
  */
-router.get("/", async (req, res) => {
+router.get("/:providerID", async (req, res) => {
   try {
     const details = await ProviderDetail.findOne({
-      user: req.user._id,
+      user: req.params.providerID,
     })
       .populate("schedule")
       .populate("services");
