@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import ModalTemp from "../modals/ModalTemplate";
 import { Providers } from "@/components/modals/Providers";
+import Auth from "../../utils/Auth";
 
 const Sidebar = () => {
   // function historyButton (businessName) {
@@ -16,7 +17,7 @@ const Sidebar = () => {
   // }
 
   return (
-    <header className='sidebar'>
+    <aside className='sidebar'>
       <nav>
         <img className='iconimage' src={Logo} alt='Jot it Down'></img>
         <button className='sidebarlink sidebarlink1 mainButton'>
@@ -28,12 +29,13 @@ const Sidebar = () => {
         <ModalTemp
           title='Places'
           className='sidebarlink sidebarlink3 mainButton'
+          modalTitle='Providers'
         >
           <Providers />
         </ModalTemp>
         {/* will need to generate based off of previous appointments */}
       </nav>
-    </header>
+    </aside>
   );
 };
 

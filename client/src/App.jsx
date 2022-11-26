@@ -6,17 +6,20 @@ import HomePage from "./pages/HomePage";
 
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
-import "./App.css"
+import "./App.css";
 
-import ProtectedRoute from "./utils/ProtectedRoute";
-import { UserProvider } from '@/utils/UserContext';
+import Auth from "./utils/Auth";
+import { ProtectedRoute, SideBarProt } from "./utils/ProtectedRoute";
+import { UserProvider } from "@/utils/UserContext";
 
 function App() {
   return (
     <Router>
       <UserProvider>
         <Header />
-        <Sidebar />
+        <SideBarProt>
+          <Sidebar />
+        </SideBarProt>
         <div className="page-container">
         <div className="content-wrap">
         <Routes>

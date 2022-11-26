@@ -3,7 +3,6 @@ import React from "react";
 const ProviderMenu = ({ providers, setSelected }) => {
   const listen = (event) => {
     console.log("listening", event);
-    debugger;
   };
 
   return providers ? (

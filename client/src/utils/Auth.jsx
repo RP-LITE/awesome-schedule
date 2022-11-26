@@ -31,7 +31,7 @@ class AuthService {
 
   get token() {
     // Retrieves the user token from localStorage
-    return localStorage.getItem("id_token") || {};
+    return localStorage.getItem("id_token");
   }
 
   async login(loginDetails) {
@@ -51,7 +51,7 @@ class AuthService {
     // Clear user token and profile data from localStorage
     localStorage.removeItem("id_token");
     // this will reload the page and reset the state of the application
-    return redirect("/");
+    return window.location.assign("/");
   }
 }
 
