@@ -25,7 +25,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        {!context.Auth.loggedIn ? (
+        {context.Auth.loggedIn ? (
           <button className='headerlink mainButton'>
             <Link to='/dashboard' relative='path'>
               Head to Dashboard

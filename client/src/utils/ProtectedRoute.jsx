@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Auth from "../utils/Auth";
+import { useContext } from "react";
+import { UserContext } from "@/utils/UserContext";
 
 export const ProtectedRoute = ({ children }) => {
-  const profile = Auth.profile;
+  const context = useContext(UserContext);
+  const profile = context.Auth.profile;
   if (!profile) {
     return <Navigate to='/' replace />;
   } else {
-    const profile = Auth.profile;
+    const profile = context.Auth.profile;
     if (profile.data.accountType === "client") {
       return children[0];
     } else if (profile.data.accountType === "provider") {
@@ -18,7 +21,8 @@ export const ProtectedRoute = ({ children }) => {
 };
 
 export const SideBarProt = ({ children }) => {
-  if (Auth.loggedIn) {
+  const context = useContext(UserContext);
+  if (context.Auth.loggedIn) {
     return <Sidebar />;
   }
 };
