@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import Auth from "../utils/Auth";
 
 const ProtectedRoute = ({ children }) => {
-  const profile = Auth.getProfile();
+  const profile = Auth.profile;
   if (!profile) {
     return <Navigate to='/' replace />;
   }

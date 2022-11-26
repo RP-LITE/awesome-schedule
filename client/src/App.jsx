@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Client from "./pages/Client";
@@ -9,14 +8,13 @@ import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import "./App.css"
 
-import Auth from "./utils/Auth";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import { UserProvider } from '@/utils/UserContext';
 
 function App() {
   return (
     <Router>
-      {/* <UserProvider> */}
+      <UserProvider>
         <Header />
         <Sidebar />
         <div className="page-container">
@@ -39,7 +37,7 @@ function App() {
         </Routes>
         </div>
         </div>
-      {/* </UserProvider> */}
+      </UserProvider>
     </Router>
   );
 }

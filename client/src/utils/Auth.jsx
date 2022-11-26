@@ -2,25 +2,26 @@
 import decode from "jwt-decode";
 import { redirect } from "react-router-dom";
 
+import * as API from './API';
+
 // create a new class to instantiate for a user
 class AuthService {
   // get user data
-  getProfile() {
-    return decode(this.getToken());
+  get profile() {
+    return decode(this.token);
   }
 
   // check if user's logged in
-  loggedIn() {
+  get loggedIn() {
     // Checks if there is a saved token and it's still valid
-    const token = this.getToken();
-    return !!token && !this.isTokenExpired(token); // handwaiving here
+    return !!this.token && this.isValid; // handwaiving here
   }
 
   // check if token is expired
-  isTokenExpired(token) {
+  get isValid() {
     try {
-      const decoded = decode(token);
-      if (decoded.exp < Date.now() / 1000) {
+      const decoded = decode(this.token);
+      if (decoded.exp >= Date.now() / 1000) {
         return true;
       } else return false;
     } catch (err) {
@@ -28,15 +29,22 @@ class AuthService {
     }
   }
 
-  getToken() {
+  get token() {
     // Retrieves the user token from localStorage
     return localStorage.getItem("id_token") || {};
   }
 
-  login(idToken,setRedirect) {
+  async login(loginDetails) {
+    const response = await API.loginUser(loginDetails);
     // Saves user token to localStorage
-    localStorage.setItem("id_token", idToken);
-    setRedirect('/dashboard');
+    localStorage.setItem("id_token", response.token);
+    return response;
+  }
+  
+  async signup(signupDetails){
+    const response = await API.createUser(signupDetails);
+    localStorage.setItem('id_token',response.token);
+    return response;
   }
 
   logout() {

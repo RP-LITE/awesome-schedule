@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 // import ModalOpen from "@/components/modals/ModalOpen";
 // import ModalBody from "@/components/modals/ModalBody";
 import ModalTemp from "../modals/ModalTemplate";
-import Auth from "../../utils/Auth";
+// import Auth from "@/utils/Auth";
 import LoginForm from "../modals/LoginForm";
 import SignUpForm from "../modals/SignUpForm";
+import { UserContext } from '@/utils/UserContext';
 
 const Header = () => {
   const [userType, setUserType] = useState("");
-
+  const context = useContext(UserContext);
   //user.type (User model) will determine the state here and render conditionally based on that.
-
+  console.log('generating header');
   return (
     <header className='header'>
       <nav>
@@ -23,8 +24,7 @@ const Header = () => {
           Dashboard
         </NavLink>
         {/* <ModalOpen Modal={ModalBody}>Sign In</ModalOpen> */}
-
-        {!Auth.loggedIn() ? (
+        {!context.Auth.loggedIn ? (
           <>
             <ModalTemp title='Login'>
               <LoginForm />
@@ -36,7 +36,6 @@ const Header = () => {
         ) : (
           <ModalTemp title='Log Out'>Logout Modal</ModalTemp>
         )}
-
         {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}
       </nav>
     </header>
