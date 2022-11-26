@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import "./modal.css";
 
 import { createUser } from "@/utils/API";
 import Auth from "@/utils/Auth";
-import { UserContext } from '@/utils/UserContext';
+import { UserContext } from "@/utils/UserContext";
 
-const SignUpForm = ({closeModal}) => {
+const SignUpForm = ({ closeModal }) => {
   const navigate = useNavigate();
   const context = useContext(UserContext);
   // set initial form state
@@ -53,10 +54,13 @@ const SignUpForm = ({closeModal}) => {
   };
 
   return (
-    <div className='modalBackground'>
-      <div className='modalContainer'>
-       <form className="signForm" onSubmit={handleFormSubmit}>
-          <label className="label username" htmlFor='username'>Username</label>
+    <>
+      <h3 className='text-3xl font=semibold text-center py-5'>Sign Up!</h3>
+      <form className='signForm' onSubmit={handleFormSubmit}>
+        <div className='labelInput'>
+          <label className='label username' htmlFor='username'>
+            Username
+          </label>
           <input
             type='text'
             placeholder='Username'
@@ -66,18 +70,26 @@ const SignUpForm = ({closeModal}) => {
             value={userFormData.username || userFormData.email}
             required
           ></input>
-          <label className="label password" htmlFor='password'>Password</label>
+        </div>
+        <div className='labelInput'>
+          <label className='label password' htmlFor='password'>
+            Password
+          </label>
           <input
             type='password'
             placeholder='********'
-           id='signUpPW'
-           name='password'
-           onChange={handleInputChange}
-           value={userFormData.password}
-           required
-         ></input>
-         <label className="label email" htmlFor='email'>Email</label>
-         <input
+            id='signUpPW'
+            name='password'
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+          ></input>
+        </div>
+        <div className='labelInput'>
+          <label className='label email' htmlFor='email'>
+            Email
+          </label>
+          <input
             type='email'
             placeholder='Your Email'
             id='signUpEmail'
@@ -85,40 +97,51 @@ const SignUpForm = ({closeModal}) => {
             onChange={handleInputChange}
             value={userFormData.email}
             required
-         ></input>
-         <label className="radio" htmlFor="client">client</label>
-          <input
-            type='radio'
-            name='accountType'
-            value='client'
-            id='clientRadio'
-            checked
-           onChange={handleInputChange}
-         />
-          <label className="radio" htmlFor="provider">provider</label>
-          <input
-           type='radio'
-            name='accountType'
-           value='provider'
-           id='providerRadio'
-            onChange={handleInputChange}
-         />
-          <button className="submitBtn"
-            disabled={
-              !(
-                userFormData.username &&
-               userFormData.password &&
-               userFormData.email
-              )
-            }
-            type='submit'
-            variant='success'
-          >
-           Submit
-          </button>
-        </form>
-      </div>
-    </div>
+          ></input>
+        </div>
+        <div className='radioDiv'>
+          <div className='radioLabelInput'>
+            <label className='radio' htmlFor='client'>
+              Client
+            </label>
+            <input
+              type='radio'
+              name='accountType'
+              value='client'
+              id='clientRadio'
+              checked
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className='radioLabelInput'>
+            <label className='radio' htmlFor='provider'>
+              Provider
+            </label>
+            <input
+              type='radio'
+              name='accountType'
+              value='provider'
+              id='providerRadio'
+              onChange={handleInputChange}
+            />
+          </div>
+        </div>
+        <button
+          className='submitBtn'
+          disabled={
+            !(
+              userFormData.username &&
+              userFormData.password &&
+              userFormData.email
+            )
+          }
+          type='submit'
+          variant='success'
+        >
+          Submit
+        </button>
+      </form>
+    </>
   );
 };
 

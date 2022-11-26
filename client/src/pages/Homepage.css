@@ -12,8 +12,9 @@
 
 .page-container-home {
   position: relative;
-  height: 100vh;
+  height: 100%;
   background-color: var(--lightblue);
+  /* z-index: -1; */
 }
 .page-container-db {
   position: relative;

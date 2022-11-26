@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./homepage.css";
+import "./Homepage.css";
 import ModalTemp from "../components/modals/ModalTemplate";
 import LoginForm from "../components/modals/LoginForm";
 import SignUpForm from "../components/modals/SignUpForm";

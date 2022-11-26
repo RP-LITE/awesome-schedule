@@ -14,10 +14,21 @@
   background: var(--grey);
   color: black;
   font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+
+.labelInput {
+  background: var(--blue);
+  width: 100%;
+  margin-top: 5px;
 }
 
 .label {
-  background: var(--blue);
+  margin: 2rem;
 }
 
 .modalContainer {
@@ -26,10 +37,8 @@
   padding: 10px;
   position: absolute;
   width: fit-content;
-  /* top: 200px;
-  left: 200px;
-  right: 200px;
-  bottom: 200px; */
+  justify-content: center;
+  align-items: center;
   background-color: var(--grey);
 }
 
@@ -42,6 +51,14 @@
   background-color: var(--red);
 }
 
+.radioDiv {
+  display: flex;
+  justify-content: space-around;
+}
+.radioLabelInput {
+  margin: 20px;
+}
+
 .username {
 }
 
@@ -52,7 +69,11 @@
 }
 
 .submitBtn {
+  border: solid;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
 }
 
 .radio {
+  padding: 5px;
 }
