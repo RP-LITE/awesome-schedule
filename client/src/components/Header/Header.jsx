@@ -24,12 +24,12 @@ const Header = () => {
           Dashboard
         </NavLink>
         {/* <ModalOpen Modal={ModalBody}>Sign In</ModalOpen> */}
-        {!context.Auth.loggedIn ? (
+        {context.Auth.loggedIn ? (
           <>
             <NavLink to='/dashboard' className='headerlink'>
               Dashboard
             </NavLink>
-            <button className='headerlink mainButton' onClick={Auth.logout}>
+            <button className='headerlink mainButton' onClick={context.Auth.logout()}>
               Logout
             </button>
           </>
