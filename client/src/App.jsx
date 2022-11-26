@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Client from "./pages/Client";
@@ -16,25 +15,32 @@ import { UserProvider } from "@/utils/UserContext";
 function App() {
   return (
     <Router>
-      {/* <UserProvider> */}
-      <Header />
-      <SideBarProt>
-        <Sidebar />
-      </SideBarProt>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route
-          path='/dashboard'
-          element={
-            <ProtectedRoute>
-              <Client />
-              <Provider />
-            </ProtectedRoute>
-          }
-        />
-        <Route path='*' element={<h1 className='display-2'>Wrong page!</h1>} />
-      </Routes>
-      {/* </UserProvider> */}
+      <UserProvider>
+        <Header />
+        <SideBarProt>
+          <Sidebar />
+        </SideBarProt>
+        <div className="page-container">
+        <div className="content-wrap">
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route
+            path='/dashboard'
+            element={
+              <ProtectedRoute>
+                <Client />
+                <Provider />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='*'
+            element={<h1 className='display-2'>Wrong page!</h1>}
+          />
+        </Routes>
+        </div>
+        </div>
+      </UserProvider>
     </Router>
   );
 }

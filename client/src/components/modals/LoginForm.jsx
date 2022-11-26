@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import { Navigate } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { loginUser } from "@/utils/API";
 import Auth from "@/utils/Auth";
+import { UserContext } from '@/utils/UserContext';
 
 const LoginForm = ({closeModal}) => {
+  const navigate = useNavigate();
   // set initial form state
+  const context = useContext(UserContext);
   const [userFormData, setUserFormData] = useState({
     username: "",
     password: "",
   });
-  const [redirect,setRedirect] = useState('');
+  // const [redirect,setRedirect] = useState('');
   // set state for form validation
   //   const [validated] = useState(false);
   // set state for alert
@@ -24,24 +27,13 @@ const LoginForm = ({closeModal}) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-
     try {
-      const response = await loginUser(userFormData);
-
-      if (!response.ok) {
+      const response = await context.login(userFormData);
+      if (!response.token || !response.user) {
         console.log('response',response);
         throw new Error("something went wrong!");
       }
-
-      const { token, user } = await response.json();
-      console.log('user',user);
-      Auth.login(token,setRedirect);
+      navigate('/dashboard');
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -49,14 +41,11 @@ const LoginForm = ({closeModal}) => {
 
     setUserFormData({
       username: "",
-      email: "",
       password: "",
     });
   };
 
   return (
-    redirect ? 
-      <Navigate to={redirect} replace/> :
       <div>
         <form className="signForm" onSubmit={handleFormSubmit}>
           <label className="label username" htmlFor='username'>Username</label>

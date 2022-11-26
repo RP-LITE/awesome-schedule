@@ -68,22 +68,18 @@ router.post("/", async (req, res) => {
  * @param {GUID} serviceID - The id of the service to edit
  */
 router.put("/:serviceID", async (req, res) => {
-  try {
-    const updateObj = Object.entries(req.body).reduce((memo, [key, val]) => {
-      if (val !== undefined && val !== null) {
+  try{
+    const updateObj = Object.entries(req.body).reduce((memo,[key,val]) => {
+      if(val !== undefined && val !== null){
         memo[`services.$.${key}`] = val;
       }
       return memo;
-    }, {});
-    const provider = await ProviderDetail.findOneAndUpdate(
-      { user: req.user._id, "services._id": req.params.serviceID },
-      {
-        $set: updateObj,
-      },
-      { new: true }
-    );
+    },{});
+    const provider = await ProviderDetail.findOneAndUpdate({user:req.user._id,'services._id':req.params.serviceID},{
+      $set:updateObj
+    },{new:true});
     res.json(provider);
-  } catch (err) {
+  }catch(err){
     console.error(err);
     res.status(500).json(err);
   }
@@ -94,18 +90,18 @@ router.put("/:serviceID", async (req, res) => {
  * @param {GUID} serviceID - id of the service to delete.
  */
 router.delete("/:serviceID", async (req, res) => {
-  try {
+  try{
     const provider = await ProviderDetail.findOneAndUpdate(
-      { user: req.user._id },
+      {user:req.user._id},
       {
         $pull: {
-          services: { _id: req.params.serviceID },
-        },
+          services:{ _id:req.params.serviceID }
+        }
       },
-      { new: true }
+      {new:true}
     );
     res.json(provider);
-  } catch (err) {
+  }catch(err){
     console.error(err);
     res.status(500).json(err);
   }

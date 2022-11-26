@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { createUser } from "@/utils/API";
 import Auth from "@/utils/Auth";
+import { UserContext } from '@/utils/UserContext';
 
 const SignUpForm = ({closeModal}) => {
+  const navigate = useNavigate();
+  const context = useContext(UserContext);
   // set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
@@ -11,6 +15,7 @@ const SignUpForm = ({closeModal}) => {
     accountType: "client",
     email: "",
   });
+
   // set state for form validation
   //   const [validated] = useState(false);
   // set state for alert
@@ -24,39 +29,27 @@ const SignUpForm = ({closeModal}) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // check if form has everything (as per react-bootstrap docs)
-    // const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   event.preventDefault();
-    //   event.stopPropagation();
-    // }
-
     try {
-      const response = await createUser({
+      const response = await context.signup({
         user: userFormData,
         detail: {
           address: "temp addresss",
         },
       });
 
-      if (!response.ok) {
+      if (!response.user || !response.token) {
         console.log(response);
-        // throw new Error("something went wrong!");
+        throw new Error("something went wrong!");
       }
-
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
+      setUserFormData({
+        username: "",
+        email: "",
+        password: "",
+      });
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
-
-    setUserFormData({
-      username: "",
-      email: "",
-      password: "",
-    });
   };
 
   return (
