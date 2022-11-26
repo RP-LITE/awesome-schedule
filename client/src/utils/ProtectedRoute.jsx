@@ -1,18 +1,25 @@
+import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar/Sidebar";
 import Auth from "../utils/Auth";
 
-const ProtectedRoute = ({ children }) => {
-  const profile = Auth.getProfile();
-  if (!profile) {
+const logIn = Auth.loggedIn();
+
+export const ProtectedRoute = ({ children }) => {
+  if (!logIn) {
     return <Navigate to='/' replace />;
-  }
-  //   console.log(children[0].type.name);
-  //   console.log(user);
-  if (profile.data.accountType === "client") {
-    return children[0];
-  } else if (profile.data.accountType === "provider") {
-    return children[1];
+  } else {
+    const profile = Auth.getProfile();
+    if (profile.data.accountType === "client") {
+      return children[0];
+    } else if (profile.data.accountType === "provider") {
+      return children[1];
+    }
   }
 };
 
-export default ProtectedRoute;
+export const SideBarProt = ({ children }) => {
+  if (logIn) {
+    return <Sidebar />;
+  }
+};

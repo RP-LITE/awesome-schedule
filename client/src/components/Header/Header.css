@@ -49,3 +49,10 @@
   transition: 1s all ease;
   background-color: blue;
 }
+
+.page-container {
+  position: relative;
+  height: 100%;
+  margin-left: 80px;
+  background-color: var(--lightblue);
+}

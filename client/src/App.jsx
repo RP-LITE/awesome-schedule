@@ -7,38 +7,33 @@ import HomePage from "./pages/HomePage";
 
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
-import "./App.css"
+import "./App.css";
 
 import Auth from "./utils/Auth";
-import ProtectedRoute from "./utils/ProtectedRoute";
-import { UserProvider } from '@/utils/UserContext';
+import { ProtectedRoute, SideBarProt } from "./utils/ProtectedRoute";
+import { UserProvider } from "@/utils/UserContext";
 
 function App() {
   return (
     <Router>
       {/* <UserProvider> */}
-        <Header />
+      <Header />
+      <SideBarProt>
         <Sidebar />
-        <div className="page-container">
-        <div className="content-wrap">
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route
-            path='/dashboard'
-            element={
-              <ProtectedRoute>
-                <Client />
-                <Provider />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path='*'
-            element={<h1 className='display-2'>Wrong page!</h1>}
-          />
-        </Routes>
-        </div>
-        </div>
+      </SideBarProt>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route
+          path='/dashboard'
+          element={
+            <ProtectedRoute>
+              <Client />
+              <Provider />
+            </ProtectedRoute>
+          }
+        />
+        <Route path='*' element={<h1 className='display-2'>Wrong page!</h1>} />
+      </Routes>
       {/* </UserProvider> */}
     </Router>
   );

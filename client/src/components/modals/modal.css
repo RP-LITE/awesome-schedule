@@ -21,6 +21,9 @@
 }
 
 .modalContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
   position: absolute;
   width: fit-content;
   /* top: 200px;
