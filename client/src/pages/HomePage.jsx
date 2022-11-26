@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./homepage.css";
 import ModalTemp from "../components/modals/ModalTemplate";
 import LoginForm from "../components/modals/LoginForm";
 import SignUpForm from "../components/modals/SignUpForm";
 import Auth from "@/utils/Auth";
 import { Link } from "react-router-dom";
+import { UserContext } from "@/utils/UserContext";
 
 export default function HomePage() {
+  const context = useContext(UserContext);
   return (
     <section className='page-container-home'>
       <div className='flex m-0 flex-col content-center items-center py-10 px-20'>
@@ -23,7 +25,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        {Auth.loggedIn() ? (
+        {!context.Auth.loggedIn ? (
           <button className='headerlink mainButton'>
             <Link to='/dashboard' relative='path'>
               Head to Dashboard
