@@ -25,9 +25,22 @@ const UserDetails = {
  * @param {string} type - The type of schedule to get; day, week, or month
  */
 router.get("/", async (req, res) => {
-  const details = await UserDetails[req.user.accountType]
-    .findOne({ user: req.user._id })
-    .populate("schedule");
+  const filterObj = {[req.user.accountType]:req.user._id};
+  const details = await Schedule.find(filterObj)
+    .populate({
+      path:"client",
+      populate:{
+        path:'client',
+        model:'ClientDetail'
+      }
+    })
+    .populate({
+      path:"provider",
+      populate:{
+        path:'provider',
+        model:'ProviderDetail'
+      }
+    });
   res.json(details);
 });
 
@@ -50,6 +63,7 @@ router.post("/:providerID", async (req, res) => {
         "schedule"
       ),
     ]);
+    console.log('client',client);
     const service = provider.services.id(req.body._id);
     if (!service) {
       res.status(400).json({ provider });
@@ -58,8 +72,8 @@ router.post("/:providerID", async (req, res) => {
     const scheduled = await Schedule.create({
       service,
       start: req.body.start,
-      client,
-      provider
+      client:client.user,
+      provider:provider.user
     });
     client.schedule.push(scheduled);
     provider.schedule.push(scheduled);

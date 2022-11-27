@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Navigate } from 'react-router-dom';
 
 import { loginUser } from "@/utils/API";
@@ -6,33 +6,39 @@ import Auth from "@/utils/Auth";
 import { UserContext } from '@/utils/UserContext';
 import { useEffect } from "react";
 
+import './Calendar.css';
+
 const Calendar = () => {
-  const { context } = useContext(UserContext);
+  const context = useContext(UserContext);
+  const [display,setDisplay] = useState(false);
   useEffect(()=>{
-    context.getSchedule();
+    const aTrig = async () => {
+      await context?.getSchedule();
+    };
+    aTrig();
   },[]);
-  debugger;
   return (
     <ul className="agenda">
       {
-        context.schedule?.days?.length ?
-          context.schedul?.days.reduce((events,day) => {
-            const hours = day.events.map(hour => {
+        Object.keys(context?.user?.schedule || {}).length ?
+          Object.entries(context?.user?.schedule).reduce((events,[day,hours]) => {
+            const hoursElements = hours.map(hour => {
               return (
-                <li>
+                <li key={hour._id}>
                   <span className="hour">{ hour.time }</span>
+                  {/* Replace the button with a modal to display the appointment details. */}
                   <button className="mainButton">
                     <h4>{ hour.name }</h4>
-                    <span className="location">{ hour.address }</span>
+                    <span className="location">{hour.locationName}: { hour.location }</span>
                   </button>
                 </li>
               )
             });
             events.push(
-              <li class='agenda--day'>
-                <h3>day.date</h3>
+              <li key={day} class='agenda--day'>
+                <h3>{day}</h3>
                 <ul>
-                  {hours}
+                  {hoursElements}
                 </ul>
               </li>
             );

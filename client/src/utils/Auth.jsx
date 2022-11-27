@@ -36,7 +36,6 @@ class AuthService {
 
   async login(loginDetails) {
     const response = await API.loginUser(loginDetails);
-    debugger;
     // Saves user token to localStorage
     localStorage.setItem("id_token", response.token);
     return response;
