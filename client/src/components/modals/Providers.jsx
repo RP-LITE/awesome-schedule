@@ -20,7 +20,6 @@ export const Providers = () => {
   useEffect(() => {}, [selectedProvider]);
 
   const selectProvider = (event) => {
-    debugger;
   };
   return selectedProvider.username ? (
     <div></div>

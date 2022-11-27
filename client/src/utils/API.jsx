@@ -59,6 +59,15 @@ export const scheduleAppt = (serviceInfo) => jsonFetch({
   }
 });
 
+export const getSchedule = () => jsonFetch({
+  route:'/api/users/schedule',
+  method:'GET',
+  headers:{
+    "Content-Type": "application/json",
+    authorization: `Bearer ${Auth.token}`,
+  }
+})
+
 //GET ONE PROVIDER
 export const findProviders = (providerInfo) => jsonFetch({
   route:"/api/users/service/providers",

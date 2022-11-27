@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.agenda{
+  display:flex;
+  flex-direction: column;
+  gap:0.5rem;
+  padding-right:1rem;
+}
+.agenda :is(li,button){
+  display:flex;
+  gap:0.5rem;
+  flex-wrap:wrap;
+}
+.agenda :is(button,h3,li > span){
+  padding: 0.5rem 1rem;
+}
+.agenda ul{
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  gap:0.25rem;
+}
+.agenda button{
+  flex:1;
+}
