@@ -1,12 +1,10 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
 
 import { createUser } from "@/utils/API";
 import Auth from "@/utils/Auth";
 import { UserContext } from '@/utils/UserContext';
 
 const SignUpForm = ({closeModal}) => {
-  const navigate = useNavigate();
   const context = useContext(UserContext);
   // set initial form state
   const [userFormData, setUserFormData] = useState({

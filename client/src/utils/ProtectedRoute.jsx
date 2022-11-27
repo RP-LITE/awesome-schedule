@@ -1,19 +1,15 @@
-import { Link } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Auth from "../utils/Auth";
 
 export const ProtectedRoute = ({ children }) => {
-  const profile = Auth.profile;
-  if (!profile) {
-    return <Navigate to='/' replace />;
-  } else {
-    const profile = Auth.profile;
-    if (profile.data.accountType === "client") {
-      return children[0];
-    } else if (profile.data.accountType === "provider") {
-      return children[1];
-    }
+  if (Auth.profile?.data?.accountType === "client") {
+    return children[0];
+  } else if (Auth.profile?.data?.accountType === "provider") {
+    return children[1];
+  }else{
+    return navigate('/');
   }
 };
 

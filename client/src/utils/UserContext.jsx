@@ -33,7 +33,21 @@ export const UserProvider = function({ children }) {
     setUser(response.user);
     navigate('/dashboard');
     return response;
-  }
+  };
+
+  const getSchedule = async ()=>{
+    const user = await Auth.getSchedule();
+    const sortedSchedule = user.schedule.sort((a,b) => {
+      return a.start - b.start;
+    });
+    setState({
+      ...state,
+      user:{
+        ...state.user,
+        schedule:response
+      }
+    });
+  };
 
   const userObj = {
     ...defaultValues,
@@ -41,7 +55,8 @@ export const UserProvider = function({ children }) {
     clearUser,
     login,
     logout,
-    signup
+    signup,
+    getSchedule
   };
 
   const [ state, setState ] = useState(userObj);
