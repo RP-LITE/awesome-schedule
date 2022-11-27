@@ -37,7 +37,8 @@ export const UserProvider = function({ children }) {
   };
 
   const getSchedule = async ()=>{
-    const schedule = (await API.getSchedule())
+    const baseSchedule = await API.getSchedule();
+    const schedule = baseSchedule
       .sort((a,b) => {
         return a.start - b.start;
       })

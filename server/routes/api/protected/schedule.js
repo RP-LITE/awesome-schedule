@@ -25,7 +25,7 @@ const UserDetails = {
  * @param {string} type - The type of schedule to get; day, week, or month
  */
 router.get("/", async (req, res) => {
-  const filterObj = {[req.user.accountType]:req.user._id};
+  const filterObj = {$or:[{client:req.user._id},{provider:req.user._id}]};
   const details = await Schedule.find(filterObj)
     .populate({
       path:"client",

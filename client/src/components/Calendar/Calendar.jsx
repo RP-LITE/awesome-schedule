@@ -35,7 +35,7 @@ const Calendar = () => {
               )
             });
             events.push(
-              <li key={day} class='agenda--day'>
+              <li key={day} className='agenda--day'>
                 <h3>{day}</h3>
                 <ul>
                   {hoursElements}
