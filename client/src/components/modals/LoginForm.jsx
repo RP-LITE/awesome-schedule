@@ -1,10 +1,13 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import "./modal.css";
 
 import { loginUser } from "@/utils/API";
 import Auth from "@/utils/Auth";
-import { UserContext } from '@/utils/UserContext';
+import { UserContext } from "@/utils/UserContext";
 
-const LoginForm = ({closeModal}) => {
+const LoginForm = ({ closeModal }) => {
+  const navigate = useNavigate();
   // set initial form state
   const context = useContext(UserContext);
   const [userFormData, setUserFormData] = useState({
@@ -28,9 +31,10 @@ const LoginForm = ({closeModal}) => {
     try {
       const response = await context.login(userFormData);
       if (!response.token || !response.user) {
-        console.log('response',response);
+        console.log("response", response);
         throw new Error("something went wrong!");
       }
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -43,9 +47,13 @@ const LoginForm = ({closeModal}) => {
   };
 
   return (
-      <div>
-        <form className="signForm" onSubmit={handleFormSubmit}>
-          <label className="label username" htmlFor='username'>Username</label>
+    <>
+      <h3 className='text-3xl font=semibold text-center py-5'>Login!</h3>
+      <form className='signForm' onSubmit={handleFormSubmit}>
+        <div className='labelInput'>
+          <label className='label username' htmlFor='username'>
+            Username
+          </label>
           <input
             type='text'
             placeholder='Username'
@@ -55,7 +63,11 @@ const LoginForm = ({closeModal}) => {
             value={userFormData.username}
             required
           ></input>
-          <label className="label password" htmlFor='password'>Password</label>
+        </div>
+        <div className='labelInput'>
+          <label className='label password' htmlFor='password'>
+            Password
+          </label>
           <input
             type='password'
             placeholder='********'
@@ -65,15 +77,17 @@ const LoginForm = ({closeModal}) => {
             value={userFormData.password}
             required
           ></input>
-          <button className="submitBtn"
-            disabled={!(userFormData.username && userFormData.password)}
-            type='submit'
-            variant='success'
-          >
-            Submit
-          </button>
-        </form>
-      </div>
+        </div>
+        <button
+          className='submitBtn'
+          disabled={!(userFormData.username && userFormData.password)}
+          type='submit'
+          variant='success'
+        >
+          Submit
+        </button>
+      </form>
+    </>
   );
 };
 

@@ -7,21 +7,18 @@ import ModalTemp from "../modals/ModalTemplate";
 // import Auth from "@/utils/Auth";
 import LoginForm from "../modals/LoginForm";
 import SignUpForm from "../modals/SignUpForm";
-import { UserContext } from '@/utils/UserContext';
+import { UserContext } from "@/utils/UserContext";
 
 const Header = () => {
   const [userType, setUserType] = useState("");
   const context = useContext(UserContext);
   //user.type (User model) will determine the state here and render conditionally based on that.
-  console.log('generating header');
+  console.log("generating header");
   return (
     <header className='header'>
       <nav className='flex'>
         <NavLink to='/' className='headerlink'>
           Home
-        </NavLink>
-        <NavLink to='/dashboard' className='headerlink'>
-          Dashboard
         </NavLink>
         {/* <ModalOpen Modal={ModalBody}>Sign In</ModalOpen> */}
         {context.Auth.loggedIn ? (
@@ -29,7 +26,10 @@ const Header = () => {
             <NavLink to='/dashboard' className='headerlink'>
               Dashboard
             </NavLink>
-            <button className='headerlink mainButton' onClick={context.Auth.logout()}>
+            <button
+              className='headerlink mainButton'
+              onClick={context.Auth.logout}
+            >
               Logout
             </button>
           </>
