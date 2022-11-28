@@ -11,16 +11,26 @@
 }
 
 .page-container-home {
+  height: 100vh;
   position: relative;
-  height: 100%;
-  background-color: var(--lightblue);
-  /* z-index: -1; */
+  background-image: url(../assets/Background.png);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  z-index: -1;
 }
 .page-container-db {
   position: relative;
   height: 100vh;
-  margin-left: 80px;
   background-color: var(--lightblue);
+ 
+}
+
+.page-container-db-p {
+  position: relative;
+  height: 100vh;
+  background-color: var(--yellow);
+ 
 }
 
 .sidebarlink {
@@ -37,4 +47,11 @@
   position: relative;
   font-weight: bold;
   border-radius: 0.25rem;
+}
+
+.logo {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 25vh
 }
