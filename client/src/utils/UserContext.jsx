@@ -50,6 +50,7 @@ export const UserProvider = function({ children }) {
         const formattedEvent = {
           _id:event._id,
           name:event.service.name,
+          clientName: event.client.username,
           locationName:event.provider.username,
           location:event.provider.provider.address,
           time: new Intl.DateTimeFormat('en-us',{timeStyle:'short'})
@@ -67,6 +68,18 @@ export const UserProvider = function({ children }) {
     });
   };
 
+  const createService = async (userFormData) =>{
+    const services = await API.createService(userFormData);
+    setState({
+      ...state,
+      user:{
+        ...state.user,
+        services
+      }
+    });
+    return services;
+  };
+
   const userObj = {
     ...defaultValues,
     setUser,
@@ -74,7 +87,8 @@ export const UserProvider = function({ children }) {
     login,
     logout,
     signup,
-    getSchedule
+    getSchedule,
+    createService
   };
 
   const [ state, setState ] = useState(userObj);

@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 import "./Calendar.css";
 
-const Calendar = () => {
+const Calendar = ({isProvider}) => {
   const context = useContext(UserContext);
   const [display, setDisplay] = useState(false);
   useEffect(() => {
@@ -27,11 +27,13 @@ const Calendar = () => {
                 <li key={hour._id}>
                   <span className='hour'>{hour.time}</span>
                   {/* Replace the button with a modal to display the appointment details. */}
-                  <button className='mainButton'>
-                    <h4>{hour.name}</h4>
-                    <span className='location'>
-                      {hour.locationName}: {hour.location}
-                    </span>
+                  <button className="mainButton">
+                    <h4>{ hour.name }</h4>
+                    {
+                      isProvider ?
+                        <span className="location">{hour.clientName}</span> :
+                        <span className="location">{hour.locationName} : { hour.location }</span>
+                    }
                   </button>
                 </li>
               );
