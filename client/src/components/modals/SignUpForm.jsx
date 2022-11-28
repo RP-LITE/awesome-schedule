@@ -55,13 +55,14 @@ const SignUpForm = ({ closeModal }) => {
 
   return (
     <>
-      <h3 className='text-3xl font=semibold text-center py-5'>Sign Up!</h3>
+      <h3 className='text-3xl font=semibold text-center py-5 textHeader'>Sign Up!</h3>
       <form className='signForm' onSubmit={handleFormSubmit}>
         <div className='labelInput'>
           <label className='label username' htmlFor='username'>
             Username
           </label>
           <input
+            className="inputBox"
             type='text'
             placeholder='Username'
             id='signUpUname'
@@ -76,6 +77,7 @@ const SignUpForm = ({ closeModal }) => {
             Password
           </label>
           <input
+            className="inputBox"
             type='password'
             placeholder='********'
             id='signUpPW'
@@ -90,6 +92,7 @@ const SignUpForm = ({ closeModal }) => {
             Email
           </label>
           <input
+            className="inputBox"
             type='email'
             placeholder='Your Email'
             id='signUpEmail'
@@ -101,10 +104,11 @@ const SignUpForm = ({ closeModal }) => {
         </div>
         <div className='radioDiv'>
           <div className='radioLabelInput'>
-            <label className='radio' htmlFor='client'>
+            <label className='radioLabel' htmlFor='client'>
               Client
             </label>
             <input
+              className="radio"
               type='radio'
               name='accountType'
               value='client'
@@ -114,10 +118,11 @@ const SignUpForm = ({ closeModal }) => {
             />
           </div>
           <div className='radioLabelInput'>
-            <label className='radio' htmlFor='provider'>
+            <label className='radioLabel' htmlFor='provider'>
               Provider
             </label>
             <input
+              className="radio"
               type='radio'
               name='accountType'
               value='provider'

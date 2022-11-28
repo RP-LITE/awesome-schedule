@@ -11,6 +11,7 @@ import "./App.css";
 import Auth from "./utils/Auth";
 import { ProtectedRoute, SideBarProt } from "./utils/ProtectedRoute";
 import { UserProvider } from "@/utils/UserContext";
+import background from "./assets/Background.png";
 
 function App() {
   return (

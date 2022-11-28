@@ -17,17 +17,17 @@ const Header = () => {
   return (
     <header className='header'>
       <nav className='flex'>
-        <NavLink to='/' className='headerlink'>
+        <NavLink to='/' className='headerlink yellow'>
           Home
         </NavLink>
         {/* <ModalOpen Modal={ModalBody}>Sign In</ModalOpen> */}
         {context.Auth.loggedIn ? (
           <>
-            <NavLink to='/dashboard' className='headerlink'>
+            <NavLink to='/dashboard' className='headerlink blue'>
               Dashboard
             </NavLink>
             <button
-              className='headerlink mainButton'
+              className='headerlink red mainButton'
               onClick={context.Auth.logout}
             >
               Logout
@@ -35,10 +35,10 @@ const Header = () => {
           </>
         ) : (
           <>
-            <ModalTemp title='Login' className='headerlink'>
+            <ModalTemp title='Login' className='headerlink red'>
               <LoginForm />
             </ModalTemp>
-            <ModalTemp title='Sign Up' className='headerlink'>
+            <ModalTemp title='Sign Up' className='headerlink yellow'>
               <SignUpForm />
             </ModalTemp>
           </>

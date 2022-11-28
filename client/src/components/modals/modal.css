@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +13,6 @@
 }
 
 .signForm {
-  background: var(--grey);
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -22,13 +23,17 @@
 }
 
 .labelInput {
-  background: var(--blue);
   width: 100%;
   margin-top: 5px;
+  font-family: 'Caudex', serif;
+  font-size:large;
+
+
 }
 
 .label {
   margin: 2rem;
+  font-size:larger;
 }
 
 .modalContainer {
@@ -39,7 +44,10 @@
   width: fit-content;
   justify-content: center;
   align-items: center;
-  background-color: var(--grey);
+  background-color: var(--lightblue);
+  border-radius: 25px;
+  box-shadow: 10px 10px var(--blue);
+  transition: all 1s ease;
 }
 
 .Overlay {
@@ -48,7 +56,8 @@
   left: 75%;
   right: 10%;
   bottom: 80%;
-  background-color: var(--red);
+  /* background-color: var(--red);
+  opacity: 50%; */
 }
 
 .radioDiv {
@@ -59,21 +68,46 @@
   margin: 20px;
 }
 
-.username {
-}
-
-.password {
-}
-
-.email {
-}
-
 .submitBtn {
   border: solid;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  background-color: var(--grey);
+  box-shadow: 5px 5px darkgrey;
+  font-family: 'Caudex', serif;
+  font-size:larger;
+}
+
+.radioLabel {
+  padding: 5px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: larger;
 }
 
 .radio {
-  padding: 5px;
+  accent-color: var(--yellow);
+}
+
+.radio:hover {
+  background-color: var(--grey);
+}
+
+.inputBox {
+  border: 3px;
+  border-style: groove;
+  background-color: var(--grey);
+  border-color: var(--blue);
+  border-radius: 5px;
+  display: inline-block;
+  float: right;
+  clear: right;
+  text-align: center;
+}
+
+.textHeader {
+  font-family: 'Cardo', serif;
+  font-size: larger;
+  font-weight: 700;
+  text-align: center;
+  
 }

@@ -48,13 +48,14 @@ const LoginForm = ({ closeModal }) => {
 
   return (
     <>
-      <h3 className='text-3xl font=semibold text-center py-5'>Login!</h3>
+      <h3 className='text-3xl font=semibold text-center py-5 textHeader'>Login!</h3>
       <form className='signForm' onSubmit={handleFormSubmit}>
         <div className='labelInput'>
           <label className='label username' htmlFor='username'>
             Username
           </label>
           <input
+            className="inputBox"
             type='text'
             placeholder='Username'
             id='signUpUname'
@@ -69,6 +70,7 @@ const LoginForm = ({ closeModal }) => {
             Password
           </label>
           <input
+            className="inputBox"
             type='password'
             placeholder='********'
             id='signUpPW'

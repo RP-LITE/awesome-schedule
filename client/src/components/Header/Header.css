@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,33 +28,37 @@
   align-items: left;
   justify-content: left;
   display: flex;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Cardo", serif;
 }
 
 .headerlink {
+  background-color:var(--grey);
   color: black;
   padding: 30px;
   justify-content: center;
   transition: 1s all ease;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Cardo", serif;
 }
 
-.headerlink.hover {
+.headerlink.active {
+  background-color: var(--blue);
+}
+
+.red:hover {
+  background-color: var(--red);
+}
+
+.yellow:hover {
+  background-color: var(--yellow);
+}
+
+.blue:hover {
   background-color: var(--lightblue);
-}
-
-.headersigninbtn {
-  background-color: aquamarine;
-}
-
-.headersigninbtn.hover {
-  transition: 1s all ease;
-  background-color: blue;
 }
 
 .page-container {
   position: relative;
   height: 100%;
   margin-left: 80px;
-  background-color: var(--lightblue);
+  /* background-color: var(--lightblue); */
 }

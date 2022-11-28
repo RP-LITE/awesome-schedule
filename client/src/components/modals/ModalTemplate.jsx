@@ -7,7 +7,7 @@ const ModalTemp = (props) => {
   return (
     <>
       <button
-        className='mainButton sidebarlink'
+        className='sidebarlink sidebarlink3 mainButton'
         type='button'
         onClick={() => setShowModal(true)}
       >
