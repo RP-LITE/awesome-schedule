@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,11 +20,13 @@
   background-size:cover;
   background-position: center;
   z-index: -1;
+  font-family: 'Cardo', serif;
 }
 .page-container-db {
   position: relative;
   height: 100vh;
   background-color: var(--lightblue);
+  font-family: 'Yanone Kaffeesatz', san-serif;
  
 }
 
@@ -30,6 +34,7 @@
   position: relative;
   height: 100vh;
   background-color: var(--yellow);
+  font-family: 'Yanone Kaffeesatz', san-serif;
  
 }
 
@@ -40,7 +45,6 @@
   justify-content: space-between;
   align-items: center;
   transition: 1s all ease;
-  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   top: 50%;
@@ -54,4 +58,18 @@
   align-items: center;
   display: flex;
   height: 25vh
+}
+
+.pageButtons {
+  background-color: var(--grey);
+  box-shadow: 10px 10px#5da2d5;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+.pageButtons:hover {
+  background-color: var(--red);
 }

@@ -34,7 +34,7 @@ export default function HomePage() {
             </Link>
           </button>
         ) : (
-          <div className='flex p-5'>
+          <div className='flex p-5 pageButtons'>
             <ModalTemp title='Sign Up' modalTitle='Sign Up'>
               <SignUpForm />
             </ModalTemp>

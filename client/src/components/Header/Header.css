@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,7 +28,7 @@
   align-items: left;
   justify-content: left;
   display: flex;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Cardo", serif;
 }
 
 .headerlink {
@@ -35,7 +37,7 @@
   padding: 30px;
   justify-content: center;
   transition: 1s all ease;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Cardo", serif;
 }
 
 .headerlink.active {

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,7 +30,7 @@
   width: 80px;
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 .sidebarlink {
@@ -38,10 +40,12 @@
   justify-content: space-between;
   align-items: center;
   transition: 1s all ease;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Cardo", serif;
+  font-size: larger;
   display: flex;
   flex-direction: column;
   top: 50%;
+  width: 100%;
   position: relative;
   font-weight: bold;
   border-radius: 0.25rem;
