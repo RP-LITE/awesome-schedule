@@ -18,14 +18,11 @@ const Sidebar = () => {
 
   return (
     <aside className='sidebar'>
+      <img className='iconimage' src={Logo} alt='Jot it Down'></img>
+      <h3>Welcome, User</h3>
       <nav>
-        <img className='iconimage' src={Logo} alt='Jot it Down'></img>
-        <button className='sidebarlink sidebarlink1 mainButton'>
-          History 1
-        </button>
-        <button className='sidebarlink sidebarlink2 mainButton'>
-          History 2
-        </button>
+        <button className='sidebarlink sidebarlink1'>History 1</button>
+        <button className='sidebarlink sidebarlink2'>History 2</button>
         <ModalTemp
           title='Places'
           className='sidebarlink sidebarlink3 mainButton'

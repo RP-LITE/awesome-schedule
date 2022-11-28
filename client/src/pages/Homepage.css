@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap");
+/* 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
   --grey: #ececec;
@@ -17,25 +17,24 @@
   position: relative;
   background-image: url(../assets/Background.png);
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
-  z-index: -1;
-  font-family: 'Cardo', serif;
+  /* z-index: -1; */
+  font-family: "Cardo", serif;
 }
+
 .page-container-db {
   position: relative;
   height: 100vh;
   background-color: var(--lightblue);
-  font-family: 'Yanone Kaffeesatz', san-serif;
- 
+  font-family: "Yanone Kaffeesatz", san-serif;
 }
 
 .page-container-db-p {
   position: relative;
   height: 100vh;
   background-color: var(--yellow);
-  font-family: 'Yanone Kaffeesatz', san-serif;
- 
+  font-family: "Yanone Kaffeesatz", san-serif;
 }
 
 .sidebarlink {
@@ -57,12 +56,12 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 25vh
+  height: 25vh;
 }
 
 .pageButtons {
   background-color: var(--grey);
-  box-shadow: 10px 10px#5da2d5;
+  box-shadow: 10px 10px #5da2d5;
   justify-content: center;
   align-items: center;
   width: 300px;

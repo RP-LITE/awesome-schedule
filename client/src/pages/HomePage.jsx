@@ -12,18 +12,18 @@ export default function HomePage() {
   const context = useContext(UserContext);
   return (
     <section className='page-container-home'>
-       <div className='flex m-0 flex-col content-center items-center py-10 px-20'>
-       <img className='logo' src={Logo} alt='Jot it Down'></img>
-        
-        <span className='text-3xl text-red'>
+      <div className='flex m-0 flex-col content-center items-center py-10 px-20'>
+        <img className='logo' src={Logo} alt='Jot it Down'></img>
+
+        <span className='text-3xl text-black'>
           ~ The Last Scheduler You'll Ever Need ~
         </span>
         <div className='content-center items-center py-10 px-20'>
           <p>
-            Jot it Down is a two way client-provider scheduling service.
-            Clients can search for providers and schedule appointments for
-            services. Providers can post there available serices and service
-            details, as well as hours of operation.
+            Jot it Down is a two way client-provider scheduling service. Clients
+            can search for providers and schedule appointments for services.
+            Providers can post there available serices and service details, as
+            well as hours of operation.
           </p>
         </div>
 
