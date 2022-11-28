@@ -47,6 +47,10 @@
   border-radius: 0.25rem;
 }
 
+.sidebarlink3 {
+  width: 100%
+}
+
 .sidebarlink1:hover {
   background-color: var(--red);
 }
