@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import ProviderMenu from "@/components/modals/providerSelection/ProviderMenu";
+import { UserContext } from "@/utils/UserContext";
 
 import { findProviders } from "@/utils/API";
 import Auth from "@/utils/Auth";
 
 export const Providers = () => {
-  const token = Auth.getToken();
+  const context = useContext(UserContext);
+  const token = context.Auth.getToken;
   const [providers, setProviders] = useState([]);
   const [selectedProvider, setSelected] = useState({});
   useEffect(() => {
@@ -17,19 +19,13 @@ export const Providers = () => {
     };
     getProviders();
   }, []);
+  console.log(providers);
   useEffect(() => {}, [selectedProvider]);
 
-  const selectProvider = (event) => {
-  };
+  const selectProvider = (event) => {};
   return selectedProvider.username ? (
     <div></div>
   ) : (
-    <ProviderMenu
-      setSelected={selectProvider}
-      providers={[
-        { username: "static1", _id: "5" },
-        { username: "another static", _id: 200 },
-      ]}
-    />
+    <ProviderMenu setSelected={selectProvider} providers={providers} />
   );
 };
