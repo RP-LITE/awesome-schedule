@@ -12,15 +12,14 @@ import { UserContext } from "@/utils/UserContext";
 const Header = () => {
   const [userType, setUserType] = useState("");
   const context = useContext(UserContext);
-  //user.type (User model) will determine the state here and render conditionally based on that.
-  console.log("generating header");
+
   return (
     <header className='header'>
       <nav className='flex'>
         <NavLink to='/' className='headerlink yellow'>
           Home
         </NavLink>
-        {/* <ModalOpen Modal={ModalBody}>Sign In</ModalOpen> */}
+
         {context.Auth.loggedIn ? (
           <>
             <NavLink to='/dashboard' className='headerlink blue'>

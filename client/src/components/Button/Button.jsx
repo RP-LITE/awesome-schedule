@@ -11,7 +11,7 @@ const Button = ({children}) => {
         setIsHover(false)};
 
         return(
-            <button class = "btn">{children}</button>
+            <button className="btn">{children}</button>
         )
 };
 
