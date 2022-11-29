@@ -27,7 +27,7 @@ const ProviderMenu = ({ providers, setSelected }) => {
           <div className='providerInfo' key={provider._id}>
             <button
               data-id={provider._id}
-              classname='submitBtn'
+              className='submitBtn'
               onClick={listen}
             >
               {provider.username} -

@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap");
-/* 
-@tailwind base;
-@tailwind components;
-@tailwind utilities; */
 
 :root {
   --grey: #ececec;
@@ -19,7 +15,18 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  /* z-index: -1; */
+  z-index: 0;
+  font-family: "Cardo", serif;
+  margin-left: 80px;
+}
+.page-container-home-logged-out {
+  height: 100vh;
+  position: relative;
+  background-image: url(../assets/Background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
   font-family: "Cardo", serif;
 }
 
@@ -28,6 +35,7 @@
   height: 100vh;
   background-color: var(--lightblue);
   font-family: "Yanone Kaffeesatz", san-serif;
+  /* margin-left: 80px; */
 }
 
 .page-container-db-p {
@@ -35,6 +43,7 @@
   height: 100vh;
   background-color: var(--yellow);
   font-family: "Yanone Kaffeesatz", san-serif;
+  /* margin-left: 80px; */
 }
 
 .sidebarlink {
