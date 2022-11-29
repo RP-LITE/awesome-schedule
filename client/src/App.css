@@ -20,5 +20,10 @@ body {
   margin-left: 80px;
 }
 
+.page-container-logged-out {
+  position: relative;
+  height: 100%;
+}
+
 .content-wrap {
 }

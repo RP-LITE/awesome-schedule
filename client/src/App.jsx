@@ -21,8 +21,8 @@ function App() {
         <SideBarProt>
           <Sidebar />
         </SideBarProt>
-        <div className="page-container">
-        <div className="content-wrap">
+        {/* <div className="page-container">
+        <div className="content-wrap"> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route
@@ -39,8 +39,8 @@ function App() {
             element={<h1 className='display-2'>Wrong page!</h1>}
           />
         </Routes>
-        </div>
-        </div>
+        {/* </div>
+        </div> */}
       </UserProvider>
     </Router>
   );

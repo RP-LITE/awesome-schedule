@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Caudex:ital@1&family=Yanone+Kaffeesatz:wght@600&display=swap");
 
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 :root {
   --grey: #ececec;
   --red: #f78888;
