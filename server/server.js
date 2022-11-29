@@ -11,12 +11,11 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-app.use(routes);
-console.log('node_env',process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
 }
 
+app.use(routes);
 
 db.once('open', () => {
   app.listen(PORT, () => console.log(`Now listening on localhost:${PORT}`));
