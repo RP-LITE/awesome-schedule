@@ -81,3 +81,7 @@
 .pageButtons:hover {
   background-color: var(--red);
 }
+
+.welcomeUser {
+  font-family: "Cardo", serif;
+}
