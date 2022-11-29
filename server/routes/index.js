@@ -4,6 +4,7 @@ const apiRoutes = require('./api');
 const fs = require('fs/promises');
 
 router.use('/api', apiRoutes);
+console.log('__dirname',__dirname);
 (async () => {
   const index = await fs.readFile('../../client/dist/index.html','utf8');
   console.log('index',index);
