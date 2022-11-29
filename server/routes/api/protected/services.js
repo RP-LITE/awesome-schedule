@@ -3,9 +3,8 @@ const { ProviderDetail, User } = require("../../../models");
 
 router.get("/providers", async (req, res) => {
   try {
-    const providers = await User.find({ accountType: "provider" }).populate(
-      "provider"
-    );
+    const providers = await User.find({ accountType: "provider" })
+      .populate("provider");
     res.json(providers);
   } catch (err) {
     console.error(err);

@@ -27,7 +27,7 @@ const Header = () => {
             </NavLink>
             <button
               className='headerlink red mainButton'
-              onClick={context.Auth.logout}
+              onClick={(event) => context.Auth.logout(context,event)}
             >
               Logout
             </button>

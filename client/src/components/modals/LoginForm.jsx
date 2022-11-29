@@ -29,7 +29,7 @@ const LoginForm = ({ closeModal }) => {
     event.preventDefault();
 
     try {
-      const response = await context.login(userFormData);
+      const response = await context.login(context,userFormData);
       if (!response.token || !response.user) {
         console.log("response", response);
         throw new Error("something went wrong!");

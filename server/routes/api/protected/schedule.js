@@ -8,8 +8,10 @@ const { ClientDetail, ProviderDetail, Schedule } = require("../../../models");
  * @returns {boolean} - Whether the time is valid or not.
  */
 const validScheduleTime = (time,res) => {
+  console.log('time',time);
+  console.log(Date.now() / 1000 / 60);
   if(time <= Date.now() / 1000 / 60){
-    res.status(400).send("Schedule request must be for future");
+    res.status(400).json({message:"Schedule request must be for future"});
     return false;
   }
   return true;
@@ -19,14 +21,10 @@ const UserDetails = {
   client: ClientDetail,
   provider: ProviderDetail,
 };
-//
-/**
- * Get the user/provider's schedule
- * @param {string} type - The type of schedule to get; day, week, or month
- */
-router.get("/", async (req, res) => {
-  const filterObj = {$or:[{client:req.user._id},{provider:req.user._id}]};
-  const details = await Schedule.find(filterObj)
+
+const getUserSchedule = (userID) => {
+  const filterObj = {$or:[{client:userID},{provider:userID}]};
+  return Schedule.find(filterObj)
     .populate({
       path:"client",
       populate:{
@@ -41,6 +39,15 @@ router.get("/", async (req, res) => {
         model:'ProviderDetail'
       }
     });
+}
+
+//
+/**
+ * Get the user/provider's schedule
+ * @param {string} type - The type of schedule to get; day, week, or month
+ */
+router.get("/", async (req, res) => {
+  const details = await getUserSchedule(req.user._id)
   res.json(details);
 });
 
@@ -53,7 +60,7 @@ router.get("/", async (req, res) => {
 router.post("/:providerID", async (req, res) => {
   try {
     // Get the user that is making the request, and the provider whose service is being used
-    
+    console.log('req.body',req.body);
     if (!validScheduleTime(req.body.start,res)) {
       return;
     }
@@ -82,7 +89,8 @@ router.post("/:providerID", async (req, res) => {
       client.save(),
       provider.save(),
     ]);
-    res.json(client);
+    const schedule = await getUserSchedule(req.user._id);
+    res.json(schedule);
   } catch (err) {
     console.error(err);
     res.status(500).send("Invalid scheduling");

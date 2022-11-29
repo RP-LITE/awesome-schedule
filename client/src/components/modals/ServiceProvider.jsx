@@ -15,7 +15,6 @@ export default function ServiceProvider({ service }){
   const [formData,setFormData] = useState(defaultForm);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    debugger;
     const dataToSend = Object.entries(formData).reduce((memo,[key,val])=>{
       if(val !== service[key] && (val || val === '0')){
         memo[key] = val;
@@ -24,8 +23,7 @@ export default function ServiceProvider({ service }){
       }
       return memo;
     },{});
-    debugger;
-    await context.editService(service._id,dataToSend);
+    await context.editService(context,service._id,dataToSend);
     setFormData(defaultForm);
   };
   const handleChange = (event) => {
@@ -33,7 +31,7 @@ export default function ServiceProvider({ service }){
     setFormData({ ...formData, [name]: value });
   }
   const deleteService = async () => {
-    await context.deleteService(service._id);
+    await context.deleteService(context,service._id);
   }
   return (
     <ModalTemp title={service.name} modalTitle={service.name} >
