@@ -18,8 +18,11 @@ router.get("/providers", async (req, res) => {
  */
 router.get("/:providerID", async (req, res) => {
   try {
+    const searchUser = req.params.providerID === 'undefined' ?
+      req.user._id :
+      req.params.providerID;
     const details = await ProviderDetail.findOne({
-      user: req.params.providerID,
+      user: searchUser,
     })
       .populate("schedule")
       .populate("services");
@@ -75,10 +78,11 @@ router.put("/:serviceID", async (req, res) => {
       }
       return memo;
     },{});
+    console.log('updateObj',updateObj);
     const provider = await ProviderDetail.findOneAndUpdate({user:req.user._id,'services._id':req.params.serviceID},{
       $set:updateObj
     },{new:true});
-    res.json(provider);
+    res.json(provider.services);
   }catch(err){
     console.error(err);
     res.status(500).json(err);
@@ -100,7 +104,7 @@ router.delete("/:serviceID", async (req, res) => {
       },
       {new:true}
     );
-    res.json(provider);
+    res.json(provider.services);
   }catch(err){
     console.error(err);
     res.status(500).json(err);
