@@ -47,6 +47,7 @@
   border-radius: 25px;
   box-shadow: 10px 10px var(--blue);
   transition: all 1s ease;
+  z-index: 20;
 }
 
 .Overlay {

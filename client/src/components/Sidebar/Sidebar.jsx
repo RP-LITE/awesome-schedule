@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Logo from "../../assets/Jot it Down Logo.png";
 import { Link, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import ModalTemp from "../modals/ModalTemplate";
 import { Providers } from "@/components/modals/Providers";
 import Auth from "../../utils/Auth";
+import { UserContext } from "@/utils/UserContext";
 
 const Sidebar = () => {
   // function historyButton (businessName) {
@@ -15,6 +16,8 @@ const Sidebar = () => {
   //           $("form").submit()
   //       })
   // }
+  const context = useContext(UserContext);
+  const profile = context.Auth.profile;
 
   return (
     <aside className='sidebar'>
@@ -23,14 +26,17 @@ const Sidebar = () => {
       <nav>
         <button className='sidebarlink sidebarlink1'>History 1</button>
         <button className='sidebarlink sidebarlink2'>History 2</button>
-        <ModalTemp
-          title='Places'
-          className='sidebarlink sidebarlink3 mainButton'
-          modalTitle='Providers'
-        >
-          <Providers />
-        </ModalTemp>
-        {/* will need to generate based off of previous appointments */}
+        {profile.data.accountType === "client" ? (
+          <ModalTemp
+            title='Providers'
+            className='sidebarlink sidebarlink3'
+            modalTitle='Providers'
+          >
+            <Providers />
+          </ModalTemp>
+        ) : (
+          <div className='sidebarlink sidebarlink3'>Provider Page</div>
+        )}
       </nav>
     </aside>
   );
