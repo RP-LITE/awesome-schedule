@@ -15,10 +15,8 @@ const CreateService = function(){
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // debugger;
     try{
       const response = await context.createService(userFormData);
-      debugger;
     }catch(err){
       console.error(err);
       setShowAlert(true);

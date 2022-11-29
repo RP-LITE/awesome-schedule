@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { UserContext } from "@/utils/UserContext";
 
 import Calendar from '@/components/Calendar/Calendar';
-import CreateService from '@/components/modals/CreateService';
+import ProviderServices from '@/components/ProviderServices';
 
 export default function Provider() {
   const context = useContext(UserContext);
@@ -14,8 +15,20 @@ export default function Provider() {
     >
       <div className='content-wrap'>
         <section className='page-container-db-p'>
-        <CreateService />
-        <Calendar isProvider={true} />
+      <nav>
+        <NavLink to='/dashboard'>Schedule</NavLink>
+        <NavLink to='/dashboard/services'>Services</NavLink>
+      </nav>
+      <Routes>
+        <Route
+          path='services'
+          element={<ProviderServices isProvider={true} />}
+        />
+        <Route
+          path=''
+          element={<Calendar isProvider={true} />}
+        />
+      </Routes>
         </section>
       </div>
     </div>

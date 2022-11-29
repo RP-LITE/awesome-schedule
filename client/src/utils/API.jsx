@@ -38,16 +38,36 @@ export const createService = (details) =>
     body: JSON.stringify(details),
   });
 //GET ALL SERVICES ROUTE
-export const getServices = (details) =>
+export const getServices = (providerID) =>
   jsonFetch({
-    route: "/api/users/service",
+    route: `/api/users/service/${providerID}`,
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${Auth.token}`,
-    },
-    body: JSON.stringify(details),
+    }
   });
+
+export const editService = (serviceID,data) => 
+  jsonFetch({
+    route: `/api/users/service/${serviceID}`,
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${Auth.token}`,
+    },
+    body:JSON.stringify(data)
+  });
+
+export const deleteService = (serviceID) => 
+  jsonFetch({
+    route: `/api/users/service/${serviceID}`,
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${Auth.token}`,
+    }
+  })
 
 //SCHEDULE APPOINTMENT ON A SERVICE
 export const scheduleAppt = (serviceInfo) =>
