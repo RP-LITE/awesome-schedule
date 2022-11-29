@@ -27,7 +27,7 @@ const Sidebar = ({ user }) => {
       </div> */}
       <nav>
         <button className='sidebarlink sidebarlink1'>History 1</button>
-        <button className='sidebarlink sidebarlink2'>History 2</button>
+        <button className='sidebarlink sidebarlink3'>History 2</button>
         {profile.data.accountType === "client" ? (
           <ModalTemp
             title='Providers'
@@ -37,7 +37,7 @@ const Sidebar = ({ user }) => {
             <Providers />
           </ModalTemp>
         ) : (
-          <div className='sidebarlink sidebarlink3'>Provider Page</div>
+          <div className='sidebarlink sidebarlink2'>Provider Page</div>
         )}
       </nav>
     </aside>

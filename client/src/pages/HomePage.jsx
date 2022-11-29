@@ -30,7 +30,7 @@ export default function HomePage() {
           <span className='text-3xl text-black'>
             ~ The Last Scheduler You'll Ever Need ~
           </span>
-          <div className='content-center items-center py-10 px-20'>
+          <div className=' max-w-4xl content-center items-center py-10 px-20 text-center text-lg'>
             <p>
               Jot it Down is a two way client-provider scheduling service.
               Clients can search for providers and schedule appointments for

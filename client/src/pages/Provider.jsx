@@ -21,12 +21,22 @@ export default function Provider() {
     >
       <div className='content-wrap'>
         <section className='page-container-db-p'>
-          <div className=' welcomeUser flex items-center justify-center bg-yellow text-3xl pt-5'>
+          <div className='welcomeUser flex items-center justify-center bg-yellow text-3xl pt-5'>
             <h3>Welcome, {profile.data.username}</h3>
           </div>
-          <nav>
-            <NavLink to='/dashboard'>Schedule</NavLink>
-            <NavLink to='/dashboard/services'>Services</NavLink>
+          <nav className='flex flex-row justify-center items-center text-2xl my-4'>
+            <NavLink
+              className='mx-2 rounded bg-red px-3 py-1 hover:bg-lightblue transition-colors'
+              to='/dashboard'
+            >
+              Schedule
+            </NavLink>
+            <NavLink
+              className='mx-2 rounded bg-red px-3 py-1 hover:bg-lightblue transition-colors'
+              to='/dashboard/services'
+            >
+              Services
+            </NavLink>
           </nav>
           <Routes>
             <Route
