@@ -21,12 +21,10 @@ function App() {
         <SideBarProt>
           <Sidebar />
         </SideBarProt>
-        {/* <div className="page-container">
-        <div className="content-wrap"> */}
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route
-            path='/dashboard'
+            path='/dashboard/*'
             element={
               <ProtectedRoute>
                 <Client />
@@ -39,8 +37,6 @@ function App() {
             element={<h1 className='display-2'>Wrong page!</h1>}
           />
         </Routes>
-        {/* </div>
-        </div> */}
       </UserProvider>
     </Router>
   );

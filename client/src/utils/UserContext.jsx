@@ -5,6 +5,7 @@ import Auth from './Auth';
 import * as API from './API';
 const defaultValues = {
   user: {},
+  detail:{},
   Auth
 };
 
@@ -50,6 +51,7 @@ export const UserProvider = function({ children }) {
         const formattedEvent = {
           _id:event._id,
           name:event.service.name,
+          clientName: event.client.username,
           locationName:event.provider.username,
           location:event.provider.provider.address,
           time: new Intl.DateTimeFormat('en-us',{timeStyle:'short'})
@@ -67,6 +69,47 @@ export const UserProvider = function({ children }) {
     });
   };
 
+  const createService = async (userFormData) =>{
+    const detail = await API.createService(userFormData);
+    setState({
+      ...state,
+      detail
+    });
+    return services;
+  };
+
+  const getServices = async (providerID) => {
+    const services = await API.getServices(providerID);
+    if(Array.isArray(detail?.services)){
+      setState({
+        ...state,
+        detail
+      });
+    }
+  };
+
+  const editService = async (serviceID,data) => {
+    const services = await API.editService(serviceID,data);
+    setState({
+      ...state,
+      detail:{
+        ...state.detail,
+        services
+      }
+    });
+  };
+
+  const deleteService = async(serviceID) => {
+    const services = await API.deleteService(serviceID);
+    setState({
+      ...state,
+      detail:{
+        ...state.detail,
+        services
+      }
+    })
+  };
+
   const userObj = {
     ...defaultValues,
     setUser,
@@ -74,7 +117,11 @@ export const UserProvider = function({ children }) {
     login,
     logout,
     signup,
-    getSchedule
+    getSchedule,
+    createService,
+    getServices,
+    editService,
+    deleteService
   };
 
   const [ state, setState ] = useState(userObj);
