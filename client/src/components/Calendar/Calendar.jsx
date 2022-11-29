@@ -13,7 +13,7 @@ const Calendar = ({isProvider}) => {
   const [display, setDisplay] = useState(false);
   useEffect(() => {
     const aTrig = async () => {
-      await context?.getSchedule();
+      await context?.getSchedule(context);
     };
     aTrig();
   }, []);

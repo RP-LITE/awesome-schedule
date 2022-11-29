@@ -31,7 +31,7 @@ const SignUpForm = ({ closeModal }) => {
     event.preventDefault();
 
     try {
-      const response = await context.signup({
+      const response = await context.signup(context,{
         user: userFormData,
         detail: {
           address: "temp addresss",

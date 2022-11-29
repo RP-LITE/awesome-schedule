@@ -17,7 +17,7 @@ const ProviderMenu = ({ providers, setSelected }) => {
           service: "haircut",
         },
       ];
-      context.setProvider(response);
+      context.setProvider(context,response);
     }
   };
 

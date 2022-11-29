@@ -14,15 +14,16 @@ export const UserContext = createContext(defaultValues);
 
 export const UserProvider = function ({ children }) {
   const navigate = useNavigate();
-  const setUser = (obj) => {
-    setState({ ...state, user: obj });
+  const setUser = (context,obj) => {
+    setState({ ...context, user: obj });
   };
   const clearUser = () => {
-    setState({ ...state, user: {} });
+    setState({ ...context, user: {} });
   };
-  const login = async (loginDetails) => {
+  const login = async (context,loginDetails) => {
+    
     const response = await Auth.login(loginDetails);
-    setUser(response.user);
+    setUser(context,response.user);
     navigate("/dashboard");
     return response;
   };
@@ -31,15 +32,14 @@ export const UserProvider = function ({ children }) {
     Auth.logout();
   };
 
-  const signup = async (signupDetails) => {
+  const signup = async (context,signupDetails) => {
     const response = await Auth.signup(signupDetails);
-    setUser(response.user);
+    setUser(context,response.user);
     navigate("/dashboard");
     return response;
   };
 
-  const getSchedule = async () => {
-    const baseSchedule = await API.getSchedule();
+  const sortSchedule = (context,baseSchedule) => {
     const schedule = baseSchedule
       .sort((a, b) => {
         return a.start - b.start;
@@ -62,63 +62,75 @@ export const UserProvider = function ({ children }) {
         memo[calendarDate].push(formattedEvent);
         return memo;
       }, {});
+      
     setState({
-      ...state,
+      ...context,
       user: {
-        ...state.user,
+        ...context.user,
         schedule,
       },
     });
   };
 
-  const createService = async (userFormData) => {
-    const detail = await API.createService(userFormData);
-    setState({
-      ...state,
-      detail,
-    });
-    return services;
+  const getSchedule = async (context) => {
+    const baseSchedule = await API.getSchedule();
+    sortSchedule(context,baseSchedule);
   };
 
-  const getServices = async (providerID) => {
-    const services = await API.getServices(providerID);
+  const createService = async (context,userFormData) => {
+    const detail = await API.createService(userFormData);
+    setState({
+      ...context,
+      detail,
+    });
+    return detail;
+  };
+
+  const getServices = async (context,providerID) => {
+    const detail = await API.getServices(providerID);
     if (Array.isArray(detail?.services)) {
       setState({
-        ...state,
+        ...context,
         detail,
       });
     }
   };
 
-  const editService = async (serviceID, data) => {
+  const editService = async (context,serviceID, data) => {
     const services = await API.editService(serviceID, data);
     setState({
-      ...state,
+      ...context,
       detail: {
-        ...state.detail,
+        ...context.detail,
         services,
       },
     });
   };
 
-  const deleteService = async (serviceID) => {
+  const deleteService = async (context,serviceID) => {
     const services = await API.deleteService(serviceID);
     setState({
-      ...state,
+      ...context,
       detail: {
-        ...state.detail,
+        ...context.detail,
         services,
       },
     });
   };
 
-  const setProvider = (provider) => {
+  const setProvider = (context,provider) => {
+    
     setState({
-      ...state,
+      ...context,
       provider,
       detail: provider.provider,
     });
   };
+
+  const scheduleAppt = async (context,details) => {
+    const schedule = await API.scheduleAppt(context.provider.user._id,details);
+    sortSchedule(context,schedule);
+  }
 
   const userObj = {
     ...defaultValues,
@@ -133,6 +145,7 @@ export const UserProvider = function ({ children }) {
     editService,
     deleteService,
     setProvider,
+    scheduleAppt
   };
 
   const [state, setState] = useState(userObj);

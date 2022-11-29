@@ -15,7 +15,7 @@ export default function ProviderServices({isProvider}){
   useEffect(()=>{
     console.log('service effect');
     const aTrig = async () =>{
-      await context.getServices(
+      await context.getServices(context,
         isProvider ?
           context.user._id :
           context.providerID

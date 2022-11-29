@@ -70,14 +70,15 @@ export const deleteService = (serviceID) =>
   })
 
 //SCHEDULE APPOINTMENT ON A SERVICE
-export const scheduleAppt = (serviceInfo) =>
+export const scheduleAppt = (providerID,serviceInfo) =>
   jsonFetch({
-    route: "/api/users/schedule/:providerID",
+    route: `/api/users/schedule/${providerID}`,
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${Auth.token}`,
     },
+    body:JSON.stringify(serviceInfo)
   });
 
 export const getSchedule = () =>
@@ -91,7 +92,7 @@ export const getSchedule = () =>
   });
 
 //GET ALL PROVIDERS
-export const findProviders = (providerInfo) =>
+export const findProviders = () =>
   jsonFetch({
     route: "/api/users/service/providers",
     method: "GET",
