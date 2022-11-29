@@ -7,7 +7,7 @@ import { Providers } from "@/components/modals/Providers";
 import Auth from "../../utils/Auth";
 import { UserContext } from "@/utils/UserContext";
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   // function historyButton (businessName) {
   //   const historyButton = $(`<div><button>${businessName}</button></div>`)
   //       $(".cities").append(historyButton)
@@ -22,7 +22,9 @@ const Sidebar = () => {
   return (
     <aside className='sidebar'>
       <img className='iconimage' src={Logo} alt='Jot it Down'></img>
-      <h3>Welcome, User</h3>
+      {/* <div className=' welcomeUser flex items-center justify-center'>
+        <h3>Welcome, {profile.data.username}</h3>
+      </div> */}
       <nav>
         <button className='sidebarlink sidebarlink1'>History 1</button>
         <button className='sidebarlink sidebarlink2'>History 2</button>

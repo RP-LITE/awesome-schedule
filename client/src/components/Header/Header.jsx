@@ -34,12 +34,12 @@ const Header = () => {
           </>
         ) : (
           <>
-            <ModalTemp title='Login' className='headerlink red'>
+            {/* <ModalTemp title='Login' className='headerlink red'>
               <LoginForm />
             </ModalTemp>
             <ModalTemp title='Sign Up' className='headerlink yellow'>
               <SignUpForm />
-            </ModalTemp>
+            </ModalTemp> */}
           </>
         )}
         {/* will fix Dashboard link to conditionally render based on userType state once Models and login are created */}
