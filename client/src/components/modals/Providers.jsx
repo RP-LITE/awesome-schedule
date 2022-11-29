@@ -10,7 +10,7 @@ export const Providers = () => {
   const context = useContext(UserContext);
   const token = context.Auth.getToken;
   const [providers, setProviders] = useState([]);
-  const [selectedProvider, setSelected] = useState({});
+  // const [selectedProvider, setSelected] = useState({});
   useEffect(() => {
     const getProviders = async () => {
       const awaitedProviders = await findProviders(null, token);
@@ -19,13 +19,6 @@ export const Providers = () => {
     };
     getProviders();
   }, []);
-  console.log(providers);
-  useEffect(() => {}, [selectedProvider]);
 
-  const selectProvider = (event) => {};
-  return selectedProvider.username ? (
-    <div></div>
-  ) : (
-    <ProviderMenu setSelected={selectProvider} providers={providers} />
-  );
+  return <ProviderMenu providers={providers} />;
 };
