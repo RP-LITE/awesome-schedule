@@ -44,7 +44,7 @@
 
 ## About The Project
 ![Product Name Screen Shot](/client/src/assets/Screenshot_awesomeschedule.jpg)
-Jot it Down is a two way client-provider scheduling service. Clients can search for providers and schedule services while providers post their availability and service details.
+Jot it Down is a two way client-provider scheduling service. Clients can search for providers and schedule services while providers post their availability and service details. Once a service is scheduled, both clients and providers can view their scheduled events on the dashboard.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
