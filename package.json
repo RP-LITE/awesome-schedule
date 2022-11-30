@@ -23,6 +23,7 @@
   "homepage": "https://github.com/RP-LITE/awesome-schedule#readme",
   "dependencies": {
     "concurrently": "^7.5.0",
+    "node": "^16.18.1",
     "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
